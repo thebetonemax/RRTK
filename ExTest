@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тест по Excel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Тест: Основные функции Excel</h2>
+    <form id="quizForm">
+        <div class="question">
+            <p><strong>Вопрос 1:</strong> Какая функция в Excel используется для суммирования чисел?</p>
+            <label><input type="radio" name="q1" value="a"> SUM</label><br>
+            <label><input type="radio" name="q1" value="b"> AVERAGE</label><br>
+            <label><input type="radio" name="q1" value="c"> COUNT</label>
+        </div>
+
+        <div class="question">
+            <p><strong>Вопрос 2:</strong> Какая функция подсчитывает количество заполненных ячеек?</p>
+            <label><input type="radio" name="q2" value="a"> SUM</label><br>
+            <label><input type="radio" name="q2" value="b"> COUNTA</label><br>
+            <label><input type="radio" name="q2" value="c"> MAX</label>
+        </div>
+
+        <div class="question">
+            <p><strong>Вопрос 3:</strong> Какая функция ищет значение в таблице по вертикали?</p>
+            <label><input type="radio" name="q3" value="a"> HLOOKUP</label><br>
+            <label><input type="radio" name="q3" value="b"> VLOOKUP</label><br>
+            <label><input type="radio" name="q3" value="c"> SEARCH</label>
+        </div>
+
+        <div class="question">
+            <p><strong>Вопрос 4:</strong> Какой символ используется для абсолютной ссылки в Excel?</p>
+            <label><input type="radio" name="q4" value="a"> $</label><br>
+            <label><input type="radio" name="q4" value="b"> &</label><br>
+            <label><input type="radio" name="q4" value="c"> #</label>
+        </div>
+
+        <div class="question">
+            <p><strong>Вопрос 5:</strong> Какая функция возвращает текущую дату?</p>
+            <label><input type="radio" name="q5" value="a"> TODAY()</label><br>
+            <label><input type="radio" name="q5" value="b"> NOW()</label><br>
+            <label><input type="radio" name="q5" value="c"> DATE()</label>
+        </div>
+
+        <button type="button" onclick="submitQuiz()">Проверить результат</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        function submitQuiz() {
+            const correctAnswers = {
+                q1: "a",
+                q2: "b",
+                q3: "b",
+                q4: "a",
+                q5: "a"
+            };
+
+            let score = 0;
+            for (let i = 1; i <= 5; i++) {
+                const questionName = "q" + i;
+                const selectedOption = document.querySelector('input[name="' + questionName + '"]:checked');
+                if (selectedOption && selectedOption.value === correctAnswers[questionName]) {
+                    score++;
+                }
+            }
+
+            document.getElementById("result").textContent = "Правильных ответов: " + score + " из 5";
+        }
+    </script>
+</body>
+</html>
